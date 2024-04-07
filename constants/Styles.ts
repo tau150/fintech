@@ -58,4 +58,11 @@ export const defaultStyles = StyleSheet.create({
     borderRadius: 16,
     gap: 20,
   },
+  phoneInput: {
+    backgroundColor: Colors.lightGray,
+    padding: 20,
+    borderRadius: 16,
+    fontSize: 20,
+    marginRight: 10
+  }
 });
