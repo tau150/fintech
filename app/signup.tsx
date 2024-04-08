@@ -2,15 +2,28 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingVi
 import React, { useState } from 'react'
 import { defaultStyles } from '@/constants/Styles'
 import Colors from '@/constants/Colors'
-import { Link } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
+import { useSignUp } from '@clerk/clerk-expo';
 
 const Signup = () => {
-  const [countryCode, setCountryCode] = useState('+49')
+  const [countryCode, setCountryCode] = useState('+34')
   const [phoneNumber, setPhoneNumber] = useState('')
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 90 : 0;
+  const router = useRouter()
+  const {signUp} = useSignUp()
+
+  const fullPhoneNumber = `${countryCode}${phoneNumber}`
 
   const onSignup = async () => {
-
+    try{
+      await signUp?.create({
+        phoneNumber: fullPhoneNumber
+      })
+      signUp!.preparePhoneNumberVerification();
+      router.push({pathname: '/verify/[phone]', params: {phone: fullPhoneNumber}})
+    }catch(e) {
+      console.log("Error signing in", e)
+    }
   }
 
   return (
