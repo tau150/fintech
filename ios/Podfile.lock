@@ -1,5 +1,10 @@
 PODS:
   - boost (1.83.0)
+  - ComputableLayout (0.7.0):
+    - DGSwiftUtilities (~> 0.11)
+  - ContextMenuAuxiliaryPreview (0.5.0):
+    - DGSwiftUtilities (~> 0.18.1)
+  - DGSwiftUtilities (0.18.1)
   - DoubleConversion (1.1.6)
   - EXApplication (5.8.3):
     - ExpoModulesCore
@@ -1163,6 +1168,15 @@ PODS:
     - React-jsi (= 0.73.6)
     - React-logger (= 0.73.6)
     - React-perflogger (= 0.73.6)
+  - ReactNativeIosContextMenu (2.5.1):
+    - ContextMenuAuxiliaryPreview (~> 0.3)
+    - DGSwiftUtilities
+    - ExpoModulesCore
+    - ReactNativeIosUtilities
+  - ReactNativeIosUtilities (4.4.5):
+    - ComputableLayout (~> 0.7)
+    - DGSwiftUtilities (~> 0.17)
+    - ExpoModulesCore
   - RNGestureHandler (2.14.1):
     - glog
     - RCT-Folly (= 2022.05.16.00)
@@ -1252,6 +1266,8 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - ReactNativeIosContextMenu (from `../node_modules/react-native-ios-context-menu`)
+  - ReactNativeIosUtilities (from `../node_modules/react-native-ios-utilities`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -1259,6 +1275,9 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ComputableLayout
+    - ContextMenuAuxiliaryPreview
+    - DGSwiftUtilities
     - fmt
     - libevent
     - SocketRocket
@@ -1403,6 +1422,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  ReactNativeIosContextMenu:
+    :path: "../node_modules/react-native-ios-context-menu"
+  ReactNativeIosUtilities:
+    :path: "../node_modules/react-native-ios-utilities"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
@@ -1414,6 +1437,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
+  ComputableLayout: c50faffac4ed9f8f05b0ce5e6f3a60df1f6042c8
+  ContextMenuAuxiliaryPreview: 1c73742ff3100dac1e0fb70bbe30284a6e711071
+  DGSwiftUtilities: 9be88816a2057f125bc8fac3da6aca3ae89c1eec
   DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
   EXApplication: 137189a3f149b4e8e546884629392c3efc94cbd3
   EXAV: 07e50f934907fa8274dd06fbcd20ee4b9478c619
@@ -1484,6 +1510,8 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 9636eee762c699ca7c85751a359101797e4c8b3b
   React-utils: d16c1d2251c088ad817996621947d0ac8167b46c
   ReactCommon: 2aa35648354bd4c4665b9a5084a7d37097b89c10
+  ReactNativeIosContextMenu: e5f972174bd78ab3a552bd6ee4745762ffaa42b3
+  ReactNativeIosUtilities: 638290fbfaa093c1b50d1f926715d77cabcae759
   RNGestureHandler: 15c6ef51acba34c49ff03003806cf5dd6098f383
   RNReanimated: f6b02d8f5eaa2830296411d4ec3b8ef5442dd13d
   RNScreens: 17e2f657f1b09a71ec3c821368a04acbb7ebcb46

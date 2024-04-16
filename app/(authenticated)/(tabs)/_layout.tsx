@@ -1,7 +1,6 @@
 import Colors from '@/constants/Colors'
 import { FontAwesome } from '@expo/vector-icons'
 import { Tabs } from 'expo-router'
-import { View, Text } from 'react-native'
 
 const Layout = () => {
   return (
