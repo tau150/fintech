@@ -1,10 +1,11 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useFonts } from 'expo-font';
 import { Link, Stack, useRouter, useSegments } from 'expo-router';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import Colors from '@/constants/Colors'
 import { StatusBar } from "expo-status-bar"
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
@@ -48,6 +49,7 @@ const InitialLayout = () => {
   const {isLoaded, isSignedIn} = useAuth();
   const segments = useSegments()
 
+
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
     if (error) throw error;
@@ -67,7 +69,7 @@ const InitialLayout = () => {
     const inAuthGroup = segments[0] === ('authenticated')
 
     if(isSignedIn && !inAuthGroup){
-      router.replace('/(authenticated)/(tabs)/home')
+      router.replace('/(authenticated)/(tabs)/crypto')
     }else{
       router.replace('/')
     }
@@ -136,17 +138,43 @@ const InitialLayout = () => {
         headerShown: false,
       }}
       />
+      <Stack.Screen
+      name="(authenticated)/crypto/[id]"
+      options={{
+        title: '',
+        headerLeft: () => (
+          <TouchableOpacity onPress={router.back}>
+            <Ionicons name="arrow-back" size={34} color={Colors.dark} />
+          </TouchableOpacity>
+          ),
+        headerLargeTitle: true,
+        headerTransparent: true,
+        headerRight: () => (
+          <View style={{ flexDirection: 'row', gap: 10 }}>
+            <TouchableOpacity>
+              <Ionicons name="notifications-outline" color={Colors.dark} size={30} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Ionicons name="star-outline" color={Colors.dark} size={30} />
+            </TouchableOpacity>
+          </View>
+        ),
+      }}
+      />
   </Stack>
   )
 }
 
 const RootLayoutNav = () => {
+  const queryClient = new QueryClient()
   return (
     <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY!} tokenCache={tokenCache}>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <StatusBar style="light" />
-        <InitialLayout />
-      </GestureHandlerRootView>
+      <QueryClientProvider client={queryClient}>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <StatusBar style="light" />
+          <InitialLayout />
+        </GestureHandlerRootView>
+      </QueryClientProvider>
     </ClerkProvider>
   );
 }

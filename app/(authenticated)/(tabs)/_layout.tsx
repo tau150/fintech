@@ -26,11 +26,11 @@ const Layout = () => {
         name="home"
         options={{
           title: 'Home',
+          headerTransparent: true,
+          header: () => <CustomHeader />,
           tabBarIcon: ({ size, color }) => (
             <FontAwesome name="registered" size={size} color={color} />
           ),
-          headerTransparent: true,
-          header: () => <CustomHeader />
         }}
       />
       <Tabs.Screen
@@ -56,6 +56,7 @@ const Layout = () => {
         options={{
           title: 'Crypto',
           tabBarIcon: ({ size, color }) => <FontAwesome name="bitcoin" size={size} color={color} />,
+          header: () => <CustomHeader />,
           headerTransparent: true,
         }}
       />
